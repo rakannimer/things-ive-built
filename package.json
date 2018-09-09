@@ -1,0 +1,34 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.0.2",
+    "@material-ui/icons": "^3.0.1",
+    "@react-firebase/auth": "^0.2.6",
+    "@react-firebase/database": "^0.2.29",
+    "@zeit/next-typescript": "^1.1.0",
+    "babel-plugin-styled-components": "^1.6.4",
+    "body-parser": "^1.18.3",
+    "classnames": "^2.2.6",
+    "express": "^4.16.3",
+    "firebase": "^5.4.2",
+    "firebase-admin": "^6.0.0",
+    "jss": "^9.8.7",
+    "lodash": "^4.17.10",
+    "next": "^6.1.2",
+    "react": "^16.5.0",
+    "react-art": "^16.5.0",
+    "react-component-component": "^1.2.1",
+    "react-dom": "^16.5.0",
+    "styled-components": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/styled-jsx": "^2.2.5",
+    "concurrently": "^4.0.1",
+    "prettier": "^1.14.2"
+  }
+}
