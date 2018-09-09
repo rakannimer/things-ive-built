@@ -2,7 +2,7 @@ import * as React from "react";
 import * as firebase from "firebase/app";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import get from "lodash/get";
-import { Component } from "../utils/component-component";
+import { Component } from "../../utils/component-component";
 export const PersonalDataLoader = () => (
   <React.Fragment>
     <FirebaseAuthConsumer>
@@ -26,11 +26,11 @@ export const PersonalDataLoader = () => (
                   authentication_data,
                   user_id: currentUserId
                 });
-              console.warn("User ID changed");
             }
           }}
         >
-          <pre>PersonalDataLoader {JSON.stringify(user, null, 2)}</pre>
+          {null}
+          {/* <pre>PersonalDataLoader {JSON.stringify(user, null, 2)}</pre> */}
         </Component>
       )}
     </FirebaseAuthConsumer>

@@ -7,12 +7,12 @@ export const styles = theme => ({
   },
   heroUnit: {
     paddingTop: 10,
-    backgroundColor: theme.palette.background.paper,
-    height: 400
+    backgroundColor: theme.palette.background.paper
   },
   heroContent: {
-    maxWidth: 600,
+    maxWidth: 800,
     margin: "0 auto",
+    minHeight: 400,
     padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`
   },
   heroButtons: {
@@ -47,8 +47,14 @@ export const styles = theme => ({
     padding: theme.spacing.unit * 6
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
+    width: 400
+  },
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center"
+  },
+  addThingForm: {
+    width: 400
   }
 });

@@ -1,4 +1,6 @@
-export type timestamp = number;
+import * as firebase from "firebase/app";
+
+export type timestamp = typeof firebase.database.ServerValue.TIMESTAMP;
 
 export type Thing = {
   author_id: string;
@@ -8,6 +10,7 @@ export type Thing = {
   tags?: {
     [tag: string]: number;
   };
+  is_public: boolean;
   description?: string;
   main_url?: string;
   github_url?: string;

@@ -10,6 +10,7 @@ let cleanProps = props => {
     willUnmount,
     getSnapshotBeforeUpdate,
     shouldUpdate,
+    didCatch,
     render,
     ...rest
   } = props;
@@ -24,6 +25,7 @@ type ComponentProps = {
   didUpdate?: any;
   willUnmount?: any;
   getSnapshotBeforeUpdate?: any;
+  didCatch?: any;
   shouldUpdate?: any;
   render?: any;
   children?: any;
@@ -96,6 +98,11 @@ export class Component extends React.Component<ComponentProps, any> {
       );
     } else {
       return null;
+    }
+  }
+  componentDidCatch(...args) {
+    if (this.props.didCatch) {
+      this.props.didCatch(...args);
     }
   }
   render() {

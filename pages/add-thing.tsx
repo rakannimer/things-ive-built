@@ -1,51 +1,40 @@
 import React from "react";
-import { Page } from "../components/Page";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import { withStyles, Button } from "@material-ui/core";
-import { styles } from "../utils/styles";
-import { Component } from "../utils/component-component";
-
-const defaultThing = {
+import Typography from "@material-ui/core/Typography";
+import { IfFirebaseAuthed, IfFirebaseUnAuthed } from "@react-firebase/auth";
+import { Page } from "../src/components/Page";
+import { ThingFormState } from "../src/types";
+import { addThing } from "../src/firebase-mutations/add-thing";
+export const defaultThing = {
   name: "",
   description: "",
   url: "",
+  thing_type: ["publication"],
   tags: []
-};
+} as ThingFormState;
+
+import { AddThingForm } from "../src/components/AddThingForm";
+import { AuthAction } from "../src/components/AuthAction";
 
 class Thing extends React.Component {
   render() {
-    const { classes } = this.props;
     return (
       <Page>
-        <pre>Thing</pre>
-        <Component>
-          {component => (
-            <form
-              onSubmit={ev => {
-                ev.preventDefault();
-                console.warn("Submitted");
+        <Typography variant="display2" style={{ textAlign: "center" }}>
+          Add a Thing
+        </Typography>
+        <IfFirebaseAuthed>
+          {({ user }) => (
+            <AddThingForm
+              onAdd={async thing => {
+                await addThing(thing, user.uid);
               }}
-            >
-              <TextField
-                id="name"
-                label="Name"
-                className={classes.textField}
-                margin="normal"
-              />
-              <TextField
-                id="description"
-                label="Name"
-                className={classes.textField}
-                margin="normal"
-              />
-              <Button type="submit">asd</Button>
-            </form>
+            />
           )}
-        </Component>
+        </IfFirebaseAuthed>
+        <IfFirebaseUnAuthed>{() => <AuthAction />}</IfFirebaseUnAuthed>
       </Page>
     );
   }
 }
 
-export default withStyles(styles)(Thing);
+export default Thing;
