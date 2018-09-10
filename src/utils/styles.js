@@ -56,5 +56,9 @@ export const styles = theme => ({
   },
   addThingForm: {
     width: 400
+  },
+  cardTitle: {
+    marginBottom: 16,
+    fontSize: 14
   }
 });

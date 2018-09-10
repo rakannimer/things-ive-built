@@ -4,6 +4,7 @@ import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import * as firebase from "firebase/app";
 import Button from "@material-ui/core/Button";
 
+import { signIn, signOut } from "../firebase-auth/";
 export const AuthAction = () => (
   <FirebaseAuthConsumer>
     {({ isSignedIn }) =>
@@ -11,7 +12,7 @@ export const AuthAction = () => (
         <Button
           color="inherit"
           onClick={async () => {
-            await firebase.auth().signOut();
+            await signOut(firebase);
           }}
         >
           Signout
@@ -20,8 +21,7 @@ export const AuthAction = () => (
         <Button
           color="inherit"
           onClick={async () => {
-            const provider = new firebase.auth.GithubAuthProvider();
-            await firebase.auth().signInWithPopup(provider);
+            await signIn({ firebase });
           }}
         >
           Login With Github

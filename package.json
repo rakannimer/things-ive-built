@@ -27,11 +27,13 @@
     "react-component-component": "^1.2.1",
     "react-dom": "^16.5.0",
     "react-microlink": "^2.2.4",
+    "render-and-add-props": "^0.5.0",
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
     "@types/styled-jsx": "^2.2.5",
     "concurrently": "^4.0.1",
+    "cypress": "^3.1.0",
     "prettier": "^1.14.2"
   }
 }

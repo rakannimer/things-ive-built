@@ -30,7 +30,6 @@ export const PersonalDataLoader = () => (
           }}
         >
           {null}
-          {/* <pre>PersonalDataLoader {JSON.stringify(user, null, 2)}</pre> */}
         </Component>
       )}
     </FirebaseAuthConsumer>

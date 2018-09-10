@@ -1,6 +1,6 @@
 import * as firebase from "firebase/app";
 
-export type timestamp = typeof firebase.database.ServerValue.TIMESTAMP;
+export type timestamp = typeof firebase.database.ServerValue.TIMESTAMP | number;
 
 export type Thing = {
   author_id: string;
