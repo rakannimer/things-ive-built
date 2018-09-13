@@ -7,6 +7,9 @@ export type Thing = {
   created_on: timestamp;
   updated_on: timestamp;
   name?: string;
+  types: {
+    [type: string]: number;
+  };
   tags?: {
     [tag: string]: number;
   };
@@ -25,6 +28,7 @@ export type UserPrivate = {
 };
 export type UserPublic = {
   username: string;
+  photo_url: string;
   user_id: string;
 };
 

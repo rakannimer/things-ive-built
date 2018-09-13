@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app";
 import { ThingFormState } from "../types";
 import { Thing } from "../schema/types";
+import { getFirebasePath } from "../utils/get-firebase-path";
 
 export const createThingFromFormState = (
   thing: ThingFormState,
@@ -17,20 +18,25 @@ export const createThingFromFormState = (
     tags: thing.tags.reduce((acc, cur) => {
       acc[cur] = Date.now();
       return acc;
+    }, {}),
+    types: thing.thing_type.reduce((acc, cur) => {
+      acc[cur] = Date.now();
+      return acc;
     }, {})
   };
 };
 
 export const addThing = async (thing: ThingFormState, uid) => {
   const thingData = createThingFromFormState(thing, uid);
+
   const result = await firebase
     .database()
-    .ref(`things/${uid}`)
+    .ref(getFirebasePath(`things/${uid}`))
     .push(thingData);
   const thingId = result.key;
   await firebase
     .database()
-    .ref(`user_things_map/${uid}/${thingId}`)
-    .set(Date.now());
-  console.log(result);
+    .ref(getFirebasePath(`public_things/${thingId}`))
+    .set(thingData);
+  return { thingId, thingData };
 };

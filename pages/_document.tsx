@@ -35,9 +35,9 @@ class MyDocument extends Document {
         return <Component {...props} />;
       };
 
-      WrappedComponent.propTypes = {
-        pageContext: PropTypes.object.isRequired
-      };
+      // WrappedComponent.propTypes = {
+      //   pageContext: PropTypes.object.isRequired
+      // };
 
       return WrappedComponent;
     });
@@ -61,8 +61,9 @@ class MyDocument extends Document {
     };
   };
   render() {
+    //@ts-ignore
     const { pageContext } = this.props;
-
+    const script = `window.ENV = '${process.env.ENV || "dev"}';`;
     return (
       <html lang="en" dir="ltr">
         <Head>
@@ -82,6 +83,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+          <script dangerouslySetInnerHTML={{ __html: script }} />
         </Head>
         <body>
           <Main />

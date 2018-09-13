@@ -23,6 +23,7 @@ class MyApp extends App {
   }
 
   render() {
+    //@ts-ignore
     const { Component, pageProps } = this.props;
     return (
       <Container>

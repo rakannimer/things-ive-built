@@ -18,7 +18,8 @@ export const HeroTitle = () => {
         color="textSecondary"
         paragraph
       >
-        Showcase the projects you have built, and see what others are building.
+        Showcase the projects you have built, and see what your peers are
+        building.
       </Typography>
     </React.Fragment>
   );

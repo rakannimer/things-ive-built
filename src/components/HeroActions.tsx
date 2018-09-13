@@ -12,14 +12,19 @@ export const HeroActions = withStyles(styles)(({ classes }) => (
     <Grid container spacing={16} justify="center">
       <Grid item>
         <Link href={{ pathname: "/add-thing" }} prefetch>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" data-testid="add-thing">
             Add a thing you've built.
           </Button>
         </Link>
       </Grid>
       <Grid item>
-        <Button variant="outlined" color="primary">
-          Explore things built by others.
+        <Button variant="outlined" color="primary" data-testid="explore">
+          <a
+            style={{ color: "inherit", textDecoration: "none" }}
+            href={"/explore"}
+          >
+            Explore things built by others.
+          </a>
         </Button>
       </Grid>
     </Grid>

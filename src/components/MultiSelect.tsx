@@ -6,12 +6,19 @@ import { withStyles } from "@material-ui/core";
 import startCase from "lodash/startCase";
 import { styles } from "../utils/styles";
 import { POSSIBLE_THING_TYPES } from "../constants";
+import { getTestIdProp } from "../utils/test-id-prop";
 
 export const MultiSelect = withStyles(styles)(
-  ({ classes, component, id = "", list = POSSIBLE_THING_TYPES }: any) => {
+  ({
+    classes,
+    component,
+    id = "",
+    list = POSSIBLE_THING_TYPES,
+    ...rest
+  }: any) => {
     const label = startCase(id);
     return (
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} {...rest}>
         <InputLabel htmlFor={`${id}`}>{label}</InputLabel>
         <Select
           multiple
@@ -28,8 +35,12 @@ export const MultiSelect = withStyles(styles)(
             id: `${id}`
           }}
         >
-          {list.map(val => (
-            <MenuItem key={val} value={val}>
+          {list.map((val, i) => (
+            <MenuItem
+              key={val}
+              value={val}
+              {...getTestIdProp(`thing-type-${i}`)}
+            >
               {val}
             </MenuItem>
           ))}

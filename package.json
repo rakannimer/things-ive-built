@@ -1,15 +1,21 @@
 {
-  "name": "create-next-example-app",
+  "name": "things-ive-built",
+  "license": "GPL-3.0",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "yarn kill-port 3000 && NODE_ENV=development node server.js",
+    "dev:test": "yarn kill-port 3000 && NODE_ENV=development node server.js",
+    "build": "NODE_ENV=production next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress run",
+    "test:i": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress open",
+    "deploy": "yarn test && yarn build && now && now alias things-ive-built.com"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.2",
     "@material-ui/icons": "^3.0.1",
-    "@react-firebase/auth": "^0.2.6",
-    "@react-firebase/database": "^0.2.29",
+    "@react-firebase/auth": "^0.2.7",
+    "@react-firebase/database": "^0.2.30",
     "@zeit/next-typescript": "^1.1.0",
     "babel-plugin-styled-components": "^1.6.4",
     "body-parser": "^1.18.3",
@@ -22,6 +28,7 @@
     "lodash": "^4.17.10",
     "material-ui-chip-input": "^1.0.0-beta.7",
     "next": "^6.1.2",
+    "now-env": "^3.1.0",
     "react": "^16.5.0",
     "react-art": "^16.5.0",
     "react-component-component": "^1.2.1",
@@ -34,6 +41,10 @@
     "@types/styled-jsx": "^2.2.5",
     "concurrently": "^4.0.1",
     "cypress": "^3.1.0",
-    "prettier": "^1.14.2"
+    "cypress-testing-library": "^2.2.1",
+    "kill-port": "^1.3.2",
+    "prettier": "^1.14.2",
+    "typescript": "^3.0.3",
+    "wait-on": "^3.0.1"
   }
 }

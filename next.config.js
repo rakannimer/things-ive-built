@@ -1,3 +1,3 @@
-const withTypescript = require('@zeit/next-typescript')
+const withTypescript = require("@zeit/next-typescript");
 
-module.exports = withTypescript()
+module.exports = withTypescript({});

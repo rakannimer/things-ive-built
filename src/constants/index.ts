@@ -17,3 +17,9 @@ export const defaultThing = {
   thing_type: ["publication"],
   tags: []
 } as ThingFormState;
+
+export const project = {
+  name: "TIB - Thing's I've Built",
+  tagline:
+    "Showcase the projects you have built, and see what your peers are building."
+};

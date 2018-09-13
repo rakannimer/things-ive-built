@@ -5,6 +5,7 @@ import { Component } from "../utils/component-component";
 import { Separator } from "./Separator";
 import { UrlPreview } from "./UrlPreview";
 import { isValidInput } from "../utils/is-valid-thing-input";
+import { getTestIdProp } from "../utils/test-id-prop";
 import { ControlledTextField } from "./ControlledTextField";
 import { ControlledTextFieldWithChips } from "./ControlledTextFieldWithChips";
 import { MultiSelect } from "./MultiSelect";
@@ -18,6 +19,7 @@ export const AddThingForm = withStyles(styles)(
           <form
             className={classes.container}
             noValidate
+            {...getTestIdProp("add-thing-form")}
             onSubmit={ev => {
               ev.preventDefault();
               const isValid = isValidInput(component.state);
@@ -28,7 +30,11 @@ export const AddThingForm = withStyles(styles)(
           >
             <FormGroup className={classes.addThingForm}>
               <Separator vertical space={20} />
-              <MultiSelect component={component} id={"thing_type"} />
+              <MultiSelect
+                component={component}
+                id={"thing_type"}
+                data-testid="thing-type"
+              />
               <Separator vertical space={5} />
               <ControlledTextField component={component} id={"name"} />
               <ControlledTextField component={component} id={"description"} />

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { FirebaseDatabaseNode } from "@react-firebase/database";
 import { renderAndAddProps, Renderable } from "render-and-add-props";
-import { Thing } from "../../schema/types";
+import { getFirebasePath } from "../../utils/get-firebase-path";
 
-export const ThingsDataLoader = ({
+export const UserThingsDataLoader = ({
   uid,
   children
 }: {
@@ -11,7 +11,7 @@ export const ThingsDataLoader = ({
   children?: Renderable;
 }) => {
   return (
-    <FirebaseDatabaseNode path={`things/${uid}`} isList>
+    <FirebaseDatabaseNode path={getFirebasePath(`things/${uid}`)} isList>
       {({ value: things }) => {
         if (Array.isArray(things) === false) return null;
         const thingsIds = things.map(t => t.key);
