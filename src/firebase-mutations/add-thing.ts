@@ -15,6 +15,7 @@ export const createThingFromFormState = (
     description: thing.description,
     main_url: thing.url,
     is_public: true,
+    release_date: thing.release_date.valueOf(),
     tags: thing.tags.reduce((acc, cur) => {
       acc[cur] = Date.now();
       return acc;

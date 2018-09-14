@@ -7,9 +7,9 @@
     "dev:test": "yarn kill-port 3000 && NODE_ENV=development node server.js",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress run",
+    "test": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && yarn kill-port 3000",
     "test:i": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress open",
-    "deploy": "yarn test && yarn build && now && now alias things-ive-built.com"
+    "deploy": "yarn test && yarn build && now --public && now alias things-ive-built.com"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.2",
@@ -32,6 +32,7 @@
     "react": "^16.5.0",
     "react-art": "^16.5.0",
     "react-component-component": "^1.2.1",
+    "react-day-picker": "^7.2.4",
     "react-dom": "^16.5.0",
     "react-microlink": "^2.2.4",
     "render-and-add-props": "^0.5.0",

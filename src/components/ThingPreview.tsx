@@ -43,13 +43,15 @@ export const ThingPreview = withStyles(styles)(
       created_on,
       name,
       tags,
+      release_date,
       types,
       description,
       main_url,
       author_id
     } = thingData;
-    const createdOnDate = new Date(created_on as number);
-    const date = `${createdOnDate.toLocaleDateString()} ${createdOnDate.toLocaleTimeString()}`;
+
+    const releaseDate = new Date(release_date as number);
+    const date = `${releaseDate.toLocaleDateString()} ${releaseDate.toLocaleTimeString()}`;
     return (
       <React.Fragment>
         <Card style={{ width: 500 }} data-testid="thing-preview">

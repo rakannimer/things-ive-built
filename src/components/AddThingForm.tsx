@@ -1,5 +1,6 @@
+import * as React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
-import { withStyles, Button } from "@material-ui/core";
+import { withStyles, Button, Typography } from "@material-ui/core";
 import { styles } from "../utils/styles";
 import { Component } from "../utils/component-component";
 import { Separator } from "./Separator";
@@ -10,6 +11,26 @@ import { ControlledTextField } from "./ControlledTextField";
 import { ControlledTextFieldWithChips } from "./ControlledTextFieldWithChips";
 import { MultiSelect } from "./MultiSelect";
 import { defaultThing } from "../constants/";
+import FormControl from "@material-ui/core/FormControl";
+
+import DayPickerInput from "react-day-picker/DayPickerInput";
+
+const SetReleaseDate = ({ component }) => (
+  <FormControl>
+    <Typography> Release Date </Typography>
+    <Separator vertical space={5} />
+    <DayPickerInput
+      format=""
+      onDayChange={day => {
+        component.setState(state => ({
+          ...state,
+          release_date: new Date(day)
+        }));
+      }}
+    />
+    <Separator vertical space={0} />
+  </FormControl>
+);
 
 export const AddThingForm = withStyles(styles)(
   ({ classes, onAdd = state => {} }: any) => {
@@ -30,12 +51,14 @@ export const AddThingForm = withStyles(styles)(
           >
             <FormGroup className={classes.addThingForm}>
               <Separator vertical space={20} />
+              <SetReleaseDate component={component} />
               <MultiSelect
                 component={component}
                 id={"thing_type"}
                 data-testid="thing-type"
               />
-              <Separator vertical space={5} />
+              <Separator vertical space={10} />
+
               <ControlledTextField component={component} id={"name"} />
               <ControlledTextField component={component} id={"description"} />
               <ControlledTextField

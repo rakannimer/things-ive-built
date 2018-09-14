@@ -19,6 +19,7 @@ export type Thing = {
   github_url?: string;
   website_url?: string;
   twitter_url?: string;
+  release_date: timestamp;
 };
 
 export type UserPrivate = {

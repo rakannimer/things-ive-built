@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import { IfFirebaseAuthed } from "@react-firebase/auth";
 import { AuthAction } from "./AuthAction";
-import Link from "next/link";
 import { Separator } from "./Separator";
 
 export const Header = () => (
@@ -14,36 +13,42 @@ export const Header = () => (
     <CssBaseline />
     <AppBar position="static" color="default" data-testid="header">
       <Toolbar>
-        <Link href={{ pathname: "/" }} prefetch>
-          <div style={{ flexGrow: 1 }}>
+        <a
+          href={"/"}
+          style={{ flexGrow: 1, color: "inherit", textDecoration: "none" }}
+        >
+          <div>
             <Button>
               <Typography variant="title">Things I've Built</Typography>
             </Button>
           </div>
-        </Link>
-        <Button variant="outlined" data-testid="explore">
-          <a
-            style={{ color: "inherit", textDecoration: "none" }}
-            href={"/explore"}
-          >
+        </a>
+        <a
+          style={{ color: "inherit", textDecoration: "none" }}
+          href={"/explore"}
+        >
+          <Button variant="outlined" data-testid="explore">
             Explore
-          </a>
-        </Button>
+          </Button>
+        </a>
         <Separator horizontal space={4} />
-        <Link href={"/add-thing"}>
+        <a
+          style={{ color: "inherit", textDecoration: "none" }}
+          href={"/add-thing"}
+        >
           <Button variant="outlined" data-testid="explore">
             Add thing
           </Button>
-        </Link>
+        </a>
         <IfFirebaseAuthed>
           {({ user }) => {
             return (
-              <Link
-                href={{ pathname: "/things-list", query: { uid: user.uid } }}
-                prefetch
+              <a
+                style={{ color: "inherit", textDecoration: "none" }}
+                href={`/things-list?uid=${user.uid}`}
               >
                 <Button>My Things</Button>
-              </Link>
+              </a>
             );
           }}
         </IfFirebaseAuthed>

@@ -22,6 +22,7 @@ describe("things-ive-built-homepage", () => {
     getByTestId("signin").should("exist");
   });
   it("Can navigate by clicking on Add thing button", () => {
+    cy.wait(500);
     getByTestId("add-thing").click();
     cy.location("pathname").should("include", "add-thing");
   });
@@ -59,6 +60,10 @@ describe("things-ive-built-add-thing", () => {
       .click()
       .type("{esc}");
 
+    cy.get(".DayPickerInput input").click();
+    cy.get(`.DayPicker-Day[aria-disabled="false"]`)
+      .first()
+      .click();
     getById("name").type(`TEST THING NAME`);
     getById("description").type(`TEST THING DESCRIPTION`);
     getById("url").type(`https://github.com`);

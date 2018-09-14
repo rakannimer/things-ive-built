@@ -6,4 +6,5 @@ export type ThingFormState = {
     "publication" | "library" | "website" | "mobile_app" | "web_app" | "food"
   >;
   tags: string[];
+  release_date: number;
 };
