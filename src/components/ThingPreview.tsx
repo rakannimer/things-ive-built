@@ -32,12 +32,14 @@ export const ThingPreview = withStyles(styles)(
     thingId,
     thingData,
     classes,
-    onDelete = async thingId => {}
+    onDelete = async thingId => {},
+    showDelete = true
   }: {
     thingId: string;
     thingData: Thing;
     classes: any;
     onDelete?: (thingId: string) => void;
+    showDelete?: boolean;
   }) => {
     const {
       created_on,
@@ -49,7 +51,6 @@ export const ThingPreview = withStyles(styles)(
       main_url,
       author_id
     } = thingData;
-
     const releaseDate = new Date(release_date as number);
     const date = `${releaseDate.toLocaleDateString()} ${releaseDate.toLocaleTimeString()}`;
     return (
@@ -93,20 +94,22 @@ export const ThingPreview = withStyles(styles)(
             <Separator vertical space={20} />
             <UrlPreview url={main_url} />
           </CardContent>
-          <CardActions>
-            <Button
-              variant="fab"
-              aria-label="Delete"
-              color="secondary"
-              data-testid={"delete-thing"}
-              onClick={() => {
-                onDelete(thingId);
-              }}
-            >
-              <DeleteIcon />
-            </Button>
-            <Separator vertical space={10} />
-          </CardActions>
+          {showDelete && (
+            <CardActions>
+              <Button
+                variant="fab"
+                aria-label="Delete"
+                color="secondary"
+                data-testid={"delete-thing"}
+                onClick={() => {
+                  onDelete(thingId);
+                }}
+              >
+                <DeleteIcon />
+              </Button>
+              <Separator vertical space={10} />
+            </CardActions>
+          )}
         </Card>
       </React.Fragment>
     );

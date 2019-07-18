@@ -920,9 +920,9 @@
     lodash.get "^4.4.2"
     render-and-add-props "^0.5.0"
 
-"@react-firebase/database@^0.2.30":
-  version "0.2.30"
-  resolved "https://registry.npmjs.org/@react-firebase/database/-/database-0.2.30.tgz#f56ea066bcd6ade7c76ed8c36da5776c4972417a"
+"@react-firebase/database@^0.3.7":
+  version "0.3.7"
+  resolved "https://registry.npmjs.org/@react-firebase/database/-/database-0.3.7.tgz#075b12e37a29bbc7d23267b8af48bc536f362379"
   dependencies:
     immer "^1.5.0"
     lodash.get "^4.4.2"

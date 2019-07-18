@@ -15,8 +15,7 @@ class ThingsListPage extends React.Component<ThingsListPageProps> {
     if (!req || !req.firebase) return { thingsIds: [], thingsData: [] };
     const ref = getFirebaseQuery({
       path: getFirebasePath("public_things"),
-      isList: true,
-      limitToLast: 2,
+      limitToFirst: 2,
       firebase: req.firebase
     });
     // req.firebase
@@ -29,7 +28,17 @@ class ThingsListPage extends React.Component<ThingsListPageProps> {
     if (!isObject(things)) return { thingsIds: [], thingsData: [] };
 
     const thingsIds = Object.keys(things);
-    const thingsData = Object.keys(things).map(key => things[key]);
+    const thingsData = Object.keys(things)
+      .map(key => things[key])
+      .map(thing => {
+        if (!thing.release_date) {
+          return {
+            ...thing,
+            release_date: thing.created_on
+          };
+        }
+        return thing;
+      });
     return {
       thingsIds,
       thingsData

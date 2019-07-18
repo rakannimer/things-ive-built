@@ -7,15 +7,15 @@
     "dev:test": "yarn kill-port 3000 && NODE_ENV=development node server.js",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && yarn kill-port 3000",
-    "test:i": "(yarn dev &) && wait-on http://localhost:3000 && yarn cypress open",
+    "test": "(yarn kill-port 3000 &) && (yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
+    "test:i": "((yarn dev &) || true) && wait-on http://localhost:3000 && yarn cypress open",
     "deploy": "yarn test && yarn build && now --public && now alias things-ive-built.com"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.2",
     "@material-ui/icons": "^3.0.1",
     "@react-firebase/auth": "^0.2.7",
-    "@react-firebase/database": "^0.2.30",
+    "@react-firebase/database": "^0.3.7",
     "@zeit/next-typescript": "^1.1.0",
     "babel-plugin-styled-components": "^1.6.4",
     "body-parser": "^1.18.3",

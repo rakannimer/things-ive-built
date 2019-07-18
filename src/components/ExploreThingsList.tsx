@@ -17,6 +17,7 @@ export const ExploreThingsListUI = ({
             thingId={thingId}
             thingData={thingsData[i]}
             onDelete={onDelete}
+            showDelete={false}
           />
           <Separator vertical space={10} />
         </div>
@@ -29,12 +30,24 @@ export const ExploreThingsList = ({
   initial: { thingsIds: initTi, thingsData: initTd }
 }) => {
   return (
-    <FirebaseDatabaseNode path={getFirebasePath(`public_things`)} isList>
+    <FirebaseDatabaseNode
+      path={getFirebasePath(`public_things`)}
+      isList
+      limitToFirst={10}
+    >
       {({ value: things }) => {
-        if (Array.isArray(things) === false)
+        if (things === null)
           return <ExploreThingsListUI thingsIds={initTi} thingsData={initTd} />;
         const thingsIds = things.map(t => t.key);
-        const thingsData = things.map(t => t.data);
+        const thingsData = things.map(t => t.data).map(thing => {
+          if (!thing.release_date) {
+            return {
+              ...thing,
+              release_date: thing.created_on
+            };
+          }
+          return thing;
+        });
         return (
           <ExploreThingsListUI thingsIds={thingsIds} thingsData={thingsData} />
         );
