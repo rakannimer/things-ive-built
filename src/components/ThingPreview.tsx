@@ -42,9 +42,9 @@ export const ThingPreview = withStyles(styles)(
     showDelete?: boolean;
   }) => {
     const {
-      created_on,
+      // created_on,
       name,
-      tags,
+      // tags,
       release_date,
       types,
       description,

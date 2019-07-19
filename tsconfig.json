@@ -13,6 +13,23 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "lib": ["dom", "es2018"]
-  }
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

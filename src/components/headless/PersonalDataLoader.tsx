@@ -1,10 +1,9 @@
 import * as React from "react";
-import * as firebase from "firebase/app";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import get from "lodash/get";
 import { Component } from "../../utils/component-component";
-import { getFirebasePath } from "../../utils/get-firebase-path";
 import { addUser } from "../../firebase-mutations/add-user";
+
 export const PersonalDataLoader = () => (
   <React.Fragment>
     <FirebaseAuthConsumer>

@@ -1,4 +1,6 @@
-export const styles = theme => ({
+import { StyleRulesCallback } from "@material-ui/core";
+
+export const styles: StyleRulesCallback = theme => ({
   appBar: {
     position: "relative"
   },
