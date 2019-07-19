@@ -19,7 +19,7 @@ export const Header = () => (
         >
           <div>
             <Button>
-              <Typography variant="title">Things I've Built</Typography>
+              <Typography variant="h6">Things I've Built</Typography>
             </Button>
           </div>
         </a>

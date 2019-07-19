@@ -24,7 +24,7 @@ class Thing extends React.Component {
   render() {
     return (
       <Page>
-        <Typography variant="display2" style={{ textAlign: "center" }}>
+        <Typography variant="h3" style={{ textAlign: "center" }}>
           Add a Thing
         </Typography>
         <IfFirebaseAuthed>

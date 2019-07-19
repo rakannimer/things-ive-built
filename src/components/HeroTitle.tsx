@@ -4,20 +4,10 @@ import Typography from "@material-ui/core/Typography";
 export const HeroTitle = () => {
   return (
     <React.Fragment>
-      <Typography
-        variant="display3"
-        align="center"
-        color="textPrimary"
-        gutterBottom
-      >
+      <Typography variant="h2" align="center" color="textPrimary" gutterBottom>
         Things I've Built
       </Typography>
-      <Typography
-        variant="title"
-        align="center"
-        color="textSecondary"
-        paragraph
-      >
+      <Typography variant="h6" align="center" color="textSecondary" paragraph>
         Showcase the projects you have built, and see what your peers are
         building.
       </Typography>

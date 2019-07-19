@@ -9,7 +9,7 @@ import { styles } from "../utils/styles";
 
 export const HeroActions = withStyles(styles)(({ classes }) => (
   <div className={classes.heroButtons}>
-    <Grid container spacing={16} justify="center">
+    <Grid container spacing={10} justify="center">
       <Grid item>
         <Link href={{ pathname: "/add-thing" }} prefetch>
           <Button variant="contained" color="primary" data-testid="add-thing">

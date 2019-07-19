@@ -2,7 +2,6 @@ import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
@@ -14,6 +13,7 @@ import { styles } from "../utils/styles";
 import { Separator } from "./Separator";
 import { FirebaseDatabaseNode } from "@react-firebase/database";
 import { getFirebasePath } from "../utils/get-firebase-path";
+import Fab from "@material-ui/core/Fab";
 
 export const UserAvatar = ({ photo_url, username }) => {
   return (
@@ -60,7 +60,7 @@ export const ThingPreview = withStyles(styles)(
             <Typography className={classes.cardTitle} color="textSecondary">
               {date}
             </Typography>
-            <Typography variant="headline" component="h2">
+            <Typography variant="h5" component="h2">
               {name}
             </Typography>
             <Separator space={15} vertical />
@@ -96,8 +96,7 @@ export const ThingPreview = withStyles(styles)(
           </CardContent>
           {showDelete && (
             <CardActions>
-              <Button
-                variant="fab"
+              <Fab
                 aria-label="Delete"
                 color="secondary"
                 data-testid={"delete-thing"}
@@ -106,7 +105,7 @@ export const ThingPreview = withStyles(styles)(
                 }}
               >
                 <DeleteIcon />
-              </Button>
+              </Fab>
               <Separator vertical space={10} />
             </CardActions>
           )}
