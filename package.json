@@ -3,7 +3,7 @@
   "license": "GPL-3.0",
   "version": "0.1.0",
   "scripts": {
-    "dev": "yarn kill-port 3000 && NODE_ENV=development node server.js",
+    "dev": "yarn kill-port 3000 && nodemon nodemon.json",
     "dev:test": "yarn kill-port 3000 && NODE_ENV=development node server.js",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",

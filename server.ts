@@ -7,11 +7,12 @@ const { config } = require("./src/config/config");
 // const { serverRuntimeConfig } = require("./next.config");
 
 const { initializeApp } = require("./src/utils/initialize-firebase-admin-app");
-
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV === "development";
 const app = next({ dev });
+
 const handle = app.getRequestHandler();
+
 // console.log(serverRuntimeConfig);
 // return;
 
