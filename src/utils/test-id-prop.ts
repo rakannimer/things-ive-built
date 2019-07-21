@@ -1,1 +1,1 @@
-export const getTestIdProp = name => ({ "data-testid": name });
+export const getTestIdProp = (name: string) => ({ "data-testid": name });

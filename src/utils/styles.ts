@@ -1,4 +1,5 @@
 import { Theme, StyleRulesCallback } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 export const styles: StyleRulesCallback<Theme, {}> = theme => ({
   appBar: {
@@ -64,3 +65,5 @@ export const styles: StyleRulesCallback<Theme, {}> = theme => ({
     fontSize: 14
   }
 });
+
+export const useStyles = makeStyles(styles);

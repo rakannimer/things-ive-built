@@ -12,7 +12,8 @@ export const defaultThing = {
   description: "",
   url: "",
   thing_type: ["publication"],
-  tags: []
+  tags: [],
+  release_date: 0
 } as ThingFormState;
 
 import { AddThingForm } from "../src/components/AddThingForm";

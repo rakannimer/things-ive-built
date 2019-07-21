@@ -1,39 +1,22 @@
 import * as React from "react";
-import { FirebaseAuthConsumer } from "@react-firebase/auth";
-import get from "lodash/get";
-import { Component } from "../../utils/component-component";
 import { addUser } from "../../firebase-mutations/add-user";
+import { useFirebaseAuth } from "../../hooks/use-firebase";
 
-export const PersonalDataLoader = () => (
-  <React.Fragment>
-    <FirebaseAuthConsumer>
-      {({ providerId, user, isSignedIn }) => (
-        <Component
-          user={user}
-          isSignedIn={isSignedIn}
-          didMount={() => {
-            // console.warn("Mounted "); // , { uid: user.uid, isSignedIn });
-          }}
-          didUpdate={async prevProps => {
-            const previousUserId = get(prevProps.user, "uid", "");
-            const currentUserId = get(user, "uid", "");
-            if (previousUserId !== currentUserId && currentUserId !== "") {
-              const authentication_data = get(
-                user,
-                "providerData.0",
-                undefined
-              );
-              await addUser({
-                uid: currentUserId,
-                authentication_data,
-                authentication_method: providerId
-              });
-            }
-          }}
-        >
-          {null}
-        </Component>
-      )}
-    </FirebaseAuthConsumer>
-  </React.Fragment>
-);
+export const PersonalDataLoader = () => {
+  const { isAuthed, firebase, user } = useFirebaseAuth();
+  React.useEffect(
+    () => {
+      if (!isAuthed || firebase === null || user === null) return;
+      const currentUserId = user.uid;
+      const authentication_data = user.providerData[0];
+      const providerId = user.providerId;
+      addUser({
+        uid: currentUserId,
+        authentication_data,
+        authentication_method: providerId
+      });
+    },
+    [isAuthed, firebase]
+  );
+  return null;
+};

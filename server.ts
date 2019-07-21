@@ -1,24 +1,18 @@
 import express from "express";
 import next from "next";
 import admin from "firebase-admin";
+import initializeFirebaseApp from "initialize-firebase-app";
 
 import { config } from "./src/config/config";
-import { initializeApp } from "./src/utils/initialize-firebase-admin-app";
-// const getConfig = require("next/config").default;
-// console.log(getConfig);
-// const { serverRuntimeConfig } = require("./next.config");
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = Number(process.env.PORT) || 3000;
 const dev = process.env.NODE_ENV === "development";
 const app = next({ dev });
 
 const handle = app.getRequestHandler();
 
-// console.log(serverRuntimeConfig);
-// return;
-
 app.prepare().then(() => {
-  initializeApp({
+  initializeFirebaseApp({
     firebase: admin,
     credential: config.server.credential,
     databaseURL: config.server.databaseURL
