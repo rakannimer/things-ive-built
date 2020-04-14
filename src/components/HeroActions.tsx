@@ -11,7 +11,7 @@ export const HeroActions = withStyles(styles)(({ classes }) => (
   <div className={classes.heroButtons}>
     <Grid container spacing={10} justify="center">
       <Grid item>
-        <Link href={{ pathname: "/add-thing" }} prefetch>
+        <Link href={{ pathname: "/add-thing" }}>
           <Button variant="contained" color="primary" data-testid="add-thing">
             Add a thing you've built.
           </Button>
