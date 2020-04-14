@@ -13,8 +13,8 @@
     "deploy": "yarn test && yarn build && now --public && now --prod"
   },
   "dependencies": {
-    "@material-ui/core": "^4.2.1",
-    "@material-ui/icons": "^4.2.1",
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
     "@react-firebase/auth": "^0.2.7",
     "@react-firebase/database": "^0.3.7",
     "classnames": "^2.2.6",
@@ -30,9 +30,9 @@
     "now-env": "^3.1.0",
     "react": "^16.8.6",
     "react-art": "^16.5.0",
-    "react-component-component": "^1.2.1",
     "react-day-picker": "^7.2.4",
     "react-dom": "^16.8.6",
+    "react-firebase-hooks": "^2.1.1",
     "react-microlink": "^2.2.4",
     "render-and-add-props": "^0.5.0",
     "styled-components": "^3.4.5"

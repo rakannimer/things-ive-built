@@ -5,6 +5,7 @@ import * as firebase from "firebase/app";
 import Button from "@material-ui/core/Button";
 import { getTestIdProp } from "../utils/test-id-prop";
 import { signIn, signOut } from "../firebase-auth/";
+
 export const AuthAction = () => (
   <FirebaseAuthConsumer>
     {({ isSignedIn }) =>
