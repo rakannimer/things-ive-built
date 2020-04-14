@@ -34,6 +34,7 @@ export const addThing = async (thing: ThingFormState, uid) => {
     .database()
     .ref(getFirebasePath(`things/${uid}`))
     .push(thingData);
+  if (result.key === null) throw new Error(`failed to create thing with id.`);
   const thingId = result.key;
   await firebase
     .database()

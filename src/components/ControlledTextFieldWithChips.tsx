@@ -14,13 +14,13 @@ export const ControlledTextFieldWithChips = withStyles(styles)(
           onAdd={chip => {
             component.setState(state => ({
               ...state,
-              [id]: [...component.state[id], chip]
+              [id]: [...state[id], chip]
             }));
           }}
           onDelete={(chip, index) => {
             component.setState(state => ({
               ...state,
-              [id]: [...component.state[id].filter(c => c !== chip)]
+              [id]: [...state[id].filter(c => c !== chip)]
             }));
           }}
           id={id}
