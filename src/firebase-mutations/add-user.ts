@@ -14,7 +14,6 @@ export const addUser = async ({
     .ref(getFirebasePath(`users_private/${uid}/`))
     .update({
       authentication_method,
-      authentication_data,
       user_id: uid
     });
   const { displayName: username, photoURL: photo_url } = authentication_data;
