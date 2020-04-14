@@ -10,7 +10,7 @@
     "type-check:watch": "tsc --watch",
     "test": "yarn type-check && (yarn kill-port 3000 &) && (yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
     "test:i": "((yarn dev &) || true) && wait-on http://localhost:3000 && yarn cypress open",
-    "deploy": "yarn test && yarn build && now --public && now alias things-ive-built.com"
+    "deploy": "yarn test && yarn build && now --public && now --prod"
   },
   "dependencies": {
     "@material-ui/core": "^4.2.1",

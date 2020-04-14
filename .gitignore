@@ -22,3 +22,4 @@ yarn-error.log*
 # now-secrets.json
 #src/config/config.js
 #next.config.js
+.now
