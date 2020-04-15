@@ -36,8 +36,6 @@ export const AddThingForm = withStyles(styles)(
     const [state, setState] = React.useState(defaultThing);
     const component = { state, setState };
     return (
-      // <Component initialState={defaultThing}>
-      //   {component => (
       <form
         className={classes.container}
         noValidate
@@ -47,7 +45,7 @@ export const AddThingForm = withStyles(styles)(
           const isValid = isValidInput(state);
           if (isValid === false) return;
           onAdd(state);
-          // Reset the
+          // Reset the form
           setState(defaultThing);
         }}
       >
@@ -81,8 +79,6 @@ export const AddThingForm = withStyles(styles)(
           </Button>
         </FormGroup>
       </form>
-      //   )}
-      // </Component>
     );
   }
 );

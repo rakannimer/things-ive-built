@@ -10,11 +10,14 @@ import { Thing } from "../schema/types";
 import { UrlPreview } from "./UrlPreview";
 import { useStyles } from "../utils/styles";
 import { Separator } from "./Separator";
-import { FirebaseDatabaseNode } from "@react-firebase/database";
 import { getFirebasePath } from "../utils/get-firebase-path";
 import Fab from "@material-ui/core/Fab";
+import { getIsomorphicUseObjectVal } from "src/hooks/use-object-val";
+import { getFirebaseDatabase } from "src/utils/get-firebase";
 
-export const UserAvatar = ({ photo_url, username }) => {
+type UserAvatarProps = { photo_url: string; username: string };
+
+export const UserAvatar = ({ photo_url, username }: UserAvatarProps) => {
   return (
     <div style={{ display: "flex" }}>
       <Avatar src={photo_url} style={{ width: 20, height: 20 }} />
@@ -50,6 +53,12 @@ export const ThingPreview = ({
   } = thingData;
   const releaseDate = new Date(release_date as number);
   const date = `${releaseDate.toLocaleDateString()} ${releaseDate.toLocaleTimeString()}`;
+  const useObjectVal = getIsomorphicUseObjectVal();
+  const ref = getFirebaseDatabase().ref(
+    getFirebasePath(`users_public/${author_id}`)
+  );
+  const [user] = useObjectVal<UserAvatarProps>(ref);
+
   return (
     <React.Fragment>
       <Card style={{ width: 500 }} data-testid="thing-preview">
@@ -59,17 +68,13 @@ export const ThingPreview = ({
           </Typography>
           <Typography variant="h5">{name}</Typography>
           <Separator space={15} vertical />
-          <FirebaseDatabaseNode
-            path={getFirebasePath(`users_public/${author_id}`)}
-          >
-            {({ value }) => (
-              <React.Fragment>
-                <Separator space={5} vertical />
-                <UserAvatar {...value} />
-                <Separator space={5} vertical />
-              </React.Fragment>
+          <React.Fragment>
+            <Separator space={5} vertical />
+            {user && (
+              <UserAvatar photo_url={user.photo_url} username={user.username} />
             )}
-          </FirebaseDatabaseNode>
+            <Separator space={5} vertical />
+          </React.Fragment>
           <Separator vertical space={10} />
           <React.Fragment>
             {types &&
@@ -83,10 +88,9 @@ export const ThingPreview = ({
               ))}
           </React.Fragment>
           <Separator vertical space={20} />
-
-          <p>
+          <div>
             <Typography>{description}</Typography>
-          </p>
+          </div>
           <Separator vertical space={5} />
           <Separator vertical space={20} />
           <UrlPreview url={main_url} />

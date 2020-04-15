@@ -16,7 +16,9 @@ import { config } from "../config/config";
 const { client } = config;
 
 try {
-  firebase.initializeApp(config.client);
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp(config.client);
+  }
 } catch (err) {
   if (err.code !== "app/duplicate-app") {
     console.log("Error in firebase.initializeApp: ", err);
