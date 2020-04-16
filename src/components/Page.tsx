@@ -4,16 +4,13 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
-import { FirebaseAuthProvider } from "@react-firebase/auth";
 
 import { PageLayout } from "../components/PageLayout";
 import { addUser } from "../firebase-mutations/add-user";
 import { Head } from "./head";
 import { Main } from "../components/Main";
 import { config } from "../config/config";
-
-const { client } = config;
+import { getFirebaseAuth } from "src/utils/get-firebase";
 
 try {
   if (firebase.apps.length === 0) {
@@ -26,7 +23,7 @@ try {
 }
 
 export const Page = ({ children }) => {
-  const [user] = useAuthState(firebase.auth());
+  const [user] = useAuthState(getFirebaseAuth());
   React.useEffect(
     () => {
       if (!user) return;
@@ -36,26 +33,24 @@ export const Page = ({ children }) => {
       addUser({
         uid: currentUserId,
         authentication_data,
-        authentication_method: providerId
+        authentication_method: providerId,
       });
     },
     [user]
   );
   return (
-    <FirebaseAuthProvider firebase={firebase} {...client}>
-      <FirebaseDatabaseProvider firebase={firebase} {...client}>
-        <Head />
-        <PageLayout>
-          <Main>{children}</Main>
-        </PageLayout>
-        <style jsx global>{`
-          main {
-            justify-content: center;
-            display: flex;
-          }
-        `}</style>
-      </FirebaseDatabaseProvider>
-    </FirebaseAuthProvider>
+    <React.Fragment>
+      <Head />
+      <PageLayout>
+        <Main>{children}</Main>
+      </PageLayout>
+      <style jsx global>{`
+        main {
+          justify-content: center;
+          display: flex;
+        }
+      `}</style>
+    </React.Fragment>
   );
 };
 

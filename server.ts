@@ -1,7 +1,6 @@
 import express from "express";
 import next from "next";
 import admin from "firebase-admin";
-import initializeFirebaseApp from "initialize-firebase-app";
 
 import { config } from "./src/config/config";
 
@@ -12,11 +11,11 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  initializeFirebaseApp({
-    firebase: admin,
-    credential: config.server.credential,
-    databaseURL: config.server.databaseURL
+  admin.initializeApp({
+    credential: admin.credential.cert(config.server.credential as any),
+    databaseURL: config.server.databaseURL,
   });
+
   const server = express();
 
   server.use((req, res, next) => {
@@ -28,7 +27,7 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err;
     console.log(
       `> Ready Hey on http://localhost:${port} ${process.env.NODE_ENV}`

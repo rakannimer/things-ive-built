@@ -20,9 +20,9 @@ export const UserThingsList = ({ uid }) => {
   return (
     <div data-testid="user-things-list">
       {ids.length === 0 && (
-        <p>
+        <div data-testid="empty-list">
           No items in <pre>things</pre> list
-        </p>
+        </div>
       )}
       {ids.map((thingId, i) => {
         return (
@@ -30,7 +30,7 @@ export const UserThingsList = ({ uid }) => {
             <ThingPreview
               thingId={thingId}
               thingData={data[i]}
-              onDelete={async thingId => {
+              onDelete={async (thingId) => {
                 await deleteThing(uid, thingId);
               }}
             />

@@ -8,15 +8,14 @@
     "start": "NODE_ENV=production next start",
     "type-check": "tsc",
     "type-check:watch": "tsc --watch",
-    "test": "yarn type-check && (yarn kill-port 3000 &) && (yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
+    "//test": "yarn type-check && (yarn kill-port 3000 &) && (yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
+    "test": "yarn type-check && (yarn kill-port 3000 &) && yarn build && (yarn start &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
     "test:i": "((yarn dev &) || true) && wait-on http://localhost:3000 && yarn cypress open",
     "deploy": "yarn test && yarn build && now --public && now --prod"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
-    "@react-firebase/auth": "^0.2.7",
-    "@react-firebase/database": "^0.3.7",
     "classnames": "^2.2.6",
     "express": "^4.16.3",
     "firebase": "^6.3.1",

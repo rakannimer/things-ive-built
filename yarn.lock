@@ -1505,23 +1505,6 @@
   version "1.1.0"
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
 
-"@react-firebase/auth@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.npmjs.org/@react-firebase/auth/-/auth-0.2.7.tgz#defc9899faf87ebb949980da1f907145b9c11c69"
-  dependencies:
-    lodash.get "^4.4.2"
-    render-and-add-props "^0.5.0"
-
-"@react-firebase/database@^0.3.7":
-  version "0.3.7"
-  resolved "https://registry.npmjs.org/@react-firebase/database/-/database-0.3.7.tgz#075b12e37a29bbc7d23267b8af48bc536f362379"
-  dependencies:
-    immer "^1.5.0"
-    lodash.get "^4.4.2"
-    lodash.memoize "^4.1.2"
-    lodash.set "^4.3.2"
-    render-and-add-props "^0.5.0"
-
 "@types/blob-util@1.3.3":
   version "1.3.3"
   resolved "https://registry.npmjs.org/@types/blob-util/-/blob-util-1.3.3.tgz#adba644ae34f88e1dd9a5864c66ad651caaf628a"
@@ -4214,10 +4197,6 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
-immer@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/immer/-/immer-1.6.0.tgz#4e41801272d64bff12d4b58ada0276bb2f4ead81"
-
 immer@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npmjs.org/immer/-/immer-3.1.3.tgz#59bc742b2aab6e2c676445edb653e588a23c70fc"
@@ -4873,10 +4852,6 @@ lodash.clone@^4.5.0:
   resolved "https://registry.npmjs.org/lodash.clone/-/lodash.clone-4.5.0.tgz#195870450f5a13192478df4bc3d23d2dea1907b6"
   integrity sha1-GVhwRQ9aExkkeN9Lw9I9LeoZB7Y=
 
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-
 lodash.has@^4.5.2:
   version "4.5.2"
   resolved "https://registry.npmjs.org/lodash.has/-/lodash.has-4.5.2.tgz#d19f4dc1095058cccbe2b0cdf4ee0fe4aa37c862"
@@ -4906,17 +4881,9 @@ lodash.isstring@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
-lodash.memoize@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
-
 lodash.once@^4.0.0, lodash.once@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
-
-lodash.set@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.npmjs.org/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
 
 lodash@4.17.10, lodash@^4.14.0, lodash@^4.17.10:
   version "4.17.10"
