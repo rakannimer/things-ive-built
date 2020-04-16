@@ -37,12 +37,12 @@
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.0.2",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/styled-jsx": "^2.2.5",
     "concurrently": "^4.0.1",
-    "cypress": "^3.1.0",
-    "cypress-testing-library": "^2.2.1",
+    "cypress": "^4.4.0",
     "kill-port": "^1.3.2",
     "prettier": "^2.0.4",
     "typescript": "^3.5.3",

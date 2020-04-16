@@ -1,1 +1,1 @@
-import "cypress-testing-library/add-commands";
+import "@testing-library/react";

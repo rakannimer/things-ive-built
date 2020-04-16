@@ -6,7 +6,7 @@ const getByTestId = (testId = "signin", first = true) => {
   return first ? el.first() : el;
 };
 
-const getById = id => {
+const getById = (id) => {
   const el = cy.get(`#${id}`);
   el.should("exist");
   return el;
@@ -44,9 +44,7 @@ describe("things-ive-built-explore", () => {
 describe("things-ive-built-add-thing", () => {
   beforeEach(() => {
     cy.visit(`${BASE_URL}/add-thing?CI=1`);
-    getByTestId("signin")
-      .first()
-      .click();
+    getByTestId("signin").first().click();
     getByTestId("signout");
   });
   after(() => {
@@ -56,42 +54,30 @@ describe("things-ive-built-add-thing", () => {
   it("Can add thing if authed", () => {
     getByTestId("add-thing-form");
     getByTestId("thing-type").click();
-    getByTestId("thing-type-1")
-      .click()
-      .type("{esc}");
+    getByTestId("thing-type-1").click().type("{esc}");
 
     cy.get(".DayPickerInput input").click();
-    cy.get(`.DayPicker-Day[aria-disabled="false"]`)
-      .first()
-      .click();
+    cy.get(`.DayPicker-Day[aria-disabled="false"]`).first().click();
     getById("name").type(`TEST THING NAME`);
     getById("description").type(`TEST THING DESCRIPTION`);
     getById("url").type(`https://github.com`);
     getById("tags").type(`test_tag_1{enter}test_tag_2{enter}`);
 
-    cy.get(`button[type="submit"]`)
-      .should("exist")
-      .click();
+    cy.get(`button[type="submit"]`).should("exist").click();
 
     getById("name").should("have.value", "");
     getById("description").should("have.value", "");
     getById("url").should("have.value", "");
     getById("tags").should("have.value", "");
-    getById("added-things-preview")
-      .children()
-      .should("have.length", 1);
+    getById("added-things-preview").children().should("have.length", 1);
   });
   it("can browse my things", () => {
     cy.visit(`${BASE_URL}/my-things?CI=1`);
-    getByTestId("user-things-list")
-      .children()
-      .should("have.length", 1);
+    getByTestId("user-things-list").children().should("have.length", 1);
   });
   it("can remove a thing", () => {
     cy.visit(`${BASE_URL}/my-things?CI=1`);
     getByTestId("delete-thing").click();
-    getByTestId("user-things-list", false)
-      .children()
-      .should("have.length", 0);
+    getByTestId("empty-list", false).children().should("have.length", 1);
   });
 });
