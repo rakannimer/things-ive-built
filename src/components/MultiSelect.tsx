@@ -23,16 +23,16 @@ export const MultiSelect = withStyles(styles)(
         <Select
           multiple
           value={component.state[id]}
-          onChange={ev => {
+          onChange={(ev) => {
             const value = ev.target.value;
-            component.setState(state => ({
+            component.setState((state) => ({
               ...component.state,
-              [id]: value
+              [id]: value,
             }));
           }}
           inputProps={{
             name: `${id}`,
-            id: `${id}`
+            id: `${id}`,
           }}
         >
           {list.map((val, i) => (

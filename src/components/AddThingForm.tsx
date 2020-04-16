@@ -20,10 +20,10 @@ const SetReleaseDate = ({ component }) => (
     <Separator vertical space={5} />
     <DayPickerInput
       format=""
-      onDayChange={day => {
-        component.setState(state => ({
+      onDayChange={(day) => {
+        component.setState((state) => ({
           ...state,
-          release_date: new Date(day)
+          release_date: new Date(day),
         }));
       }}
     />
@@ -32,7 +32,7 @@ const SetReleaseDate = ({ component }) => (
 );
 
 export const AddThingForm = withStyles(styles)(
-  ({ classes, onAdd = state => {} }: any) => {
+  ({ classes, onAdd = (state) => {} }: any) => {
     const [state, setState] = React.useState(defaultThing);
     const component = { state, setState };
     return (
@@ -40,7 +40,7 @@ export const AddThingForm = withStyles(styles)(
         className={classes.container}
         noValidate
         {...getTestIdProp("add-thing-form")}
-        onSubmit={ev => {
+        onSubmit={(ev) => {
           ev.preventDefault();
           const isValid = isValidInput(state);
           if (isValid === false) return;

@@ -11,7 +11,7 @@ import { Thing } from "src/types";
 export const ExploreThingsListUI = ({
   thingsIds,
   thingsData,
-  onDelete = () => {}
+  onDelete = () => {},
 }) => {
   return (
     <div data-testid="explore-things-list">
@@ -34,7 +34,7 @@ export const ExploreThingsListUI = ({
 };
 
 export const ExploreThingsList = ({
-  initial: { thingsIds: initTi, thingsData: initTd }
+  initial: { thingsIds: initTi, thingsData: initTd },
 }) => {
   const db = getFirebaseDatabase();
 
@@ -61,7 +61,7 @@ export const ExploreThingsList = ({
     if (!thing.release_date) {
       return {
         ...thing,
-        release_date: thing.created_on
+        release_date: thing.created_on,
       };
     }
     return thing;

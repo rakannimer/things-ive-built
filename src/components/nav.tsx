@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 
 const links: { href: string; label: string; key: string }[] = [
-  { href: "https://github.com/segmentio/create-next-app", label: "Github" }
-].map(link => {
+  { href: "https://github.com/segmentio/create-next-app", label: "Github" },
+].map((link) => {
   return {
     ...link,
-    key: `nav-link-${link.href}-${link.label}`
+    key: `nav-link-${link.href}-${link.label}`,
   };
 });
 

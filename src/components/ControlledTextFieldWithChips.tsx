@@ -11,16 +11,16 @@ export const ControlledTextFieldWithChips = withStyles(styles)(
       <FormControl>
         <ChipInput
           value={component.state.tags}
-          onAdd={chip => {
-            component.setState(state => ({
+          onAdd={(chip) => {
+            component.setState((state) => ({
               ...state,
-              [id]: [...state[id], chip]
+              [id]: [...state[id], chip],
             }));
           }}
           onDelete={(chip, index) => {
-            component.setState(state => ({
+            component.setState((state) => ({
               ...state,
-              [id]: [...state[id].filter(c => c !== chip)]
+              [id]: [...state[id].filter((c) => c !== chip)],
             }));
           }}
           id={id}

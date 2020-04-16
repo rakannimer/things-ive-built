@@ -32,8 +32,8 @@ export const UserAvatar = ({ photo_url, username }: UserAvatarProps) => {
 export const ThingPreview = ({
   thingId,
   thingData,
-  onDelete = async thingId => {},
-  showDelete = true
+  onDelete = async (thingId) => {},
+  showDelete = true,
 }: {
   thingId: string;
   thingData: Thing;
@@ -49,7 +49,7 @@ export const ThingPreview = ({
     types,
     description,
     main_url,
-    author_id
+    author_id,
   } = thingData;
   const releaseDate = new Date(release_date as number);
   const date = `${releaseDate.toLocaleDateString()} ${releaseDate.toLocaleTimeString()}`;
@@ -78,7 +78,7 @@ export const ThingPreview = ({
           <Separator vertical space={10} />
           <React.Fragment>
             {types &&
-              Object.keys(types).map(type => (
+              Object.keys(types).map((type) => (
                 <Chip
                   label={type}
                   key={type}

@@ -24,20 +24,17 @@ try {
 
 export const Page = ({ children }) => {
   const [user] = useAuthState(getFirebaseAuth());
-  React.useEffect(
-    () => {
-      if (!user) return;
-      const currentUserId = user.uid;
-      const authentication_data = user.providerData[0];
-      const providerId = user.providerId;
-      addUser({
-        uid: currentUserId,
-        authentication_data,
-        authentication_method: providerId,
-      });
-    },
-    [user]
-  );
+  React.useEffect(() => {
+    if (!user) return;
+    const currentUserId = user.uid;
+    const authentication_data = user.providerData[0];
+    const providerId = user.providerId;
+    addUser({
+      uid: currentUserId,
+      authentication_data,
+      authentication_method: providerId,
+    });
+  }, [user]);
   return (
     <React.Fragment>
       <Head />
