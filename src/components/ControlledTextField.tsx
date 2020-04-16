@@ -13,13 +13,13 @@ const getTextFieldProps = ({ classes, state, setState, id }) => {
     margin: "normal" as any,
     value: state[id],
     autoComplete: "off",
-    onChange: ev => {
+    onChange: (ev) => {
       const value = ev.target.value;
-      setState(state => ({
+      setState((state) => ({
         ...state,
-        [id]: value
+        [id]: value,
       }));
-    }
+    },
   };
 };
 export const ControlledTextField = withStyles(styles)(

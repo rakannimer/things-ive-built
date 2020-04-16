@@ -2,25 +2,35 @@ import * as React from "react";
 import { ThingPreview } from "./ThingPreview";
 import { Separator } from "./Separator";
 import { deleteThing } from "../firebase-mutations/delete-thing";
-import { useFirebaseDatabaseList } from "../hooks/use-firebase";
+import { getFirebaseDatabase } from "src/utils/get-firebase";
+import { getIsomorphicUseObjectVal } from "src/hooks/use-object-val";
+import { getFirebasePath } from "src/utils/get-firebase-path";
+import { Thing } from "src/types";
 
 export const UserThingsList = ({ uid }) => {
-  const { ids, data, firebase } = useFirebaseDatabaseList(
-    uid === "" ? null : `things/${uid}`
-  );
-  if (firebase === null) {
-    return <div>Loading..</div>;
+  const ref = getFirebaseDatabase().ref(getFirebasePath(`things/${uid}`));
+  const useObjectVal = getIsomorphicUseObjectVal();
+  const [things, , error] = useObjectVal<{ [id: string]: Thing }>(ref);
+  if (error) {
+    console.log(`Faild to fetch user things in UserThingsList `, error);
   }
+  const ids = Object.keys(things || {});
+  const data = Object.values(things || {});
 
   return (
     <div data-testid="user-things-list">
+      {ids.length === 0 && (
+        <div data-testid="empty-list">
+          No items in <pre>things</pre> list
+        </div>
+      )}
       {ids.map((thingId, i) => {
         return (
           <div key={thingId}>
             <ThingPreview
               thingId={thingId}
               thingData={data[i]}
-              onDelete={async thingId => {
+              onDelete={async (thingId) => {
                 await deleteThing(uid, thingId);
               }}
             />

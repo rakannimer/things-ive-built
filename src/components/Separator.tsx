@@ -9,14 +9,14 @@ export type SeparatorProps = {
 export const Separator = ({
   vertical,
   horizontal,
-  space = 1
+  space = 1,
 }: SeparatorProps) => (
   <div
     style={{
       marginTop: vertical ? space : 0,
       marginBottom: vertical ? space : 0,
       marginLeft: horizontal ? space : 0,
-      marginRight: horizontal ? space : 0
+      marginRight: horizontal ? space : 0,
     }}
   />
 );

@@ -1,34 +1,35 @@
 import React from "react";
 
-import { FirebaseAuthConsumer } from "@react-firebase/auth";
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import Button from "@material-ui/core/Button";
 import { getTestIdProp } from "../utils/test-id-prop";
 import { signIn, signOut } from "../firebase-auth/";
-export const AuthAction = () => (
-  <FirebaseAuthConsumer>
-    {({ isSignedIn }) =>
-      isSignedIn ? (
-        <Button
-          {...getTestIdProp("signout")}
-          color="inherit"
-          onClick={async () => {
-            await signOut(firebase);
-          }}
-        >
-          Sign Out
-        </Button>
-      ) : (
-        <Button
-          {...getTestIdProp("signin")}
-          color="inherit"
-          onClick={async () => {
-            await signIn({ firebase });
-          }}
-        >
-          Sign In
-        </Button>
-      )
-    }
-  </FirebaseAuthConsumer>
-);
+import { useAuthState } from "react-firebase-hooks/auth";
+
+export const AuthAction = () => {
+  const [user] = useAuthState(firebase.auth());
+  if (Boolean(user) === true) {
+    return (
+      <Button
+        {...getTestIdProp("signout")}
+        color="inherit"
+        onClick={async () => {
+          await signOut(firebase);
+        }}
+      >
+        Sign Out
+      </Button>
+    );
+  }
+  return (
+    <Button
+      {...getTestIdProp("signin")}
+      color="inherit"
+      onClick={async () => {
+        await signIn({ firebase });
+      }}
+    >
+      Sign In
+    </Button>
+  );
+};
