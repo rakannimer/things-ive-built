@@ -22,14 +22,16 @@ Run dev server :
 
 ## Testing
 
+Headless Cypress e2e tests :
+
+```
+yarn test
+```
+
 Interactive Cypress e2e tests :
 
 ```
 yarn test:i
 ```
 
-Headless Cypress e2e tests :
-
-```
-yarn test
-```
+[Read more.](https://medium.com/@rakannimer/server-rendered-react-firebase-web-app-with-nextjs-af51a6e78d87)

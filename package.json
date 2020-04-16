@@ -8,7 +8,6 @@
     "start": "NODE_ENV=production next start",
     "type-check": "tsc",
     "type-check:watch": "tsc --watch",
-    "//test": "yarn type-check && (yarn kill-port 3000 &) && (yarn dev &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
     "test": "yarn type-check && (yarn kill-port 3000 &) && yarn build && (yarn start &) && wait-on http://localhost:3000 && yarn cypress run && (yarn kill-port 3000 &)",
     "test:i": "((yarn dev &) || true) && wait-on http://localhost:3000 && yarn cypress open",
     "deploy": "yarn test && yarn build && now --public && now --prod"
@@ -21,7 +20,6 @@
     "firebase": "^6.3.1",
     "firebase-admin": "^8.2.0",
     "immer": "^3.1.3",
-    "initialize-firebase-app": "^1.1.0",
     "is-url": "^1.2.4",
     "lodash": "^4.17.10",
     "material-ui-chip-input": "^1.0.0-beta.7",
@@ -33,7 +31,6 @@
     "react-dom": "^16.8.6",
     "react-firebase-hooks": "^2.1.1",
     "react-microlink": "^2.2.4",
-    "render-and-add-props": "^0.5.0",
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
@@ -45,6 +42,7 @@
     "cypress": "^4.4.0",
     "kill-port": "^1.3.2",
     "prettier": "^2.0.4",
+    "ts-node": "^8.8.2",
     "typescript": "^3.5.3",
     "wait-on": "^3.0.1"
   }
